@@ -2,8 +2,9 @@ var c = document.querySelector('canvas');
 var ctx = c.getContext('2d');
 
 c.width = window.innerWidth*0.8 < 1000 ? window.innerWidth*0.8 : 1000;
-c.height = window.innerHeight*0.4;
+c.height = window.innerHeight*0.5;
 
+document.body.appendChild(c);
 
 var backgroundColor = "#19f";
 var skyColor = "#5AB8FF";
