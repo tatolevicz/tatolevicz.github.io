@@ -2,8 +2,10 @@ var c = document.querySelector('canvas');
 var ctx = c.getContext('2d');
 
 c.width = window.innerWidth*0.8 < 1000 ? window.innerWidth*0.8 : 1000;
-c.height = window.innerHeight*0.4;
+c.height = 500;
 
+var startBtn = document.querySelector("#startGameBtn");
+var uiContainer = document.querySelector("#container-ui");
 
 var backgroundColor = "#19f";
 var skyColor = "#5AB8FF";
@@ -12,11 +14,15 @@ var hillsColor = "black";
 var hillsHeightFactor = 0.25;
 const numerOfHillsRoad = 350;
 
+var playing = true;
+
 var time = 0;
 var speed = 0;
 var t = 0;
 var k = {ArrowUp:0, ArrowDown:0, ArrowLeft:0, ArrowRight:0};
-var playing = true;
+
+//fazer maquina de estado aqui
+
 
 var roadFactor = 0.01;
 var skyFactor = 0.05;
@@ -80,6 +86,7 @@ var player = new function()
             this.y = pos1 - 15;
             grounded = 1;
         }
+
 
         if(!playing || grounded && Math.abs(this.rot) > Math.PI * 0.7){
             playing = false;
@@ -147,4 +154,8 @@ onkeydown = d => k[d.key] = 1;
 onkeyup = d => k[d.key] = 0;
 
 
-loop();
+startBtn.addEventListener("click",() => {
+    console.log("click button");
+    loop();
+    uiContainer.setAttribute("style","display: none !important");
+});
