@@ -5,5 +5,16 @@
         "firebase.json",
         "**/.*"
       ]
+    },
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "teste"
+      }
+    ],
+    "functions":{
+        "source": ".",
+        "predeploy": ["yarn install"],
+        "runtime": "nodejs12"
     }
 }
